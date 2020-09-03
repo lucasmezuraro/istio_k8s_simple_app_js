@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-app-service
+  labels:
+    version: v1
+spec:
+  selector:
+    matchLabels:
+      app: simple-app-service
+  template:
+    metadata:
+      labels:
+        app: simple-app-service
+        version: v1
+    spec:
+      containers:
+      - name: simple-app-service
+        image: lpmezuraro/simple-app
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3001
